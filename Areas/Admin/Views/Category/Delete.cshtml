@@ -1,0 +1,54 @@
+﻿@model Category
+
+@* <form method="post"></form> *@
+
+<h1 class="text-primary">Delete Category</h1>
+
+<form method="post">
+    <input asp-for="Id" hidden>
+
+    <fieldset>
+        <div>
+            <label asp-for="Name" class="form-label mt-0"></label>
+            <input asp-for="Name" class="form-control shadow border-black" disabled id="exampleInputEmail1" placeholder="Enter Category Name">
+            
+
+        </div>
+        <div>
+            <label asp-for="DisplayOrder" class="form-label mt-2"></label>
+            <input asp-for="DisplayOrder" class="form-control shadow border-black" id="exampleInputPassword1" placeholder="Enter Display Order" autocomplete="off">
+            
+        </div>
+    </fieldset>
+
+
+    <div class="row">
+        <div class="col-6">
+            <button id="DelBtn" type="submit" class="btn mt-3 shadow border-black form-control ">Delete</button>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Category" asp-action="Index" class="btn btn-dark mt-3 shadow border-black form-control">Go back to list</a>
+        </div>
+    </div>
+
+</form>
+
+
+
+<style>
+    form {
+        border: 2px solid #000;
+        border-radius: 7px;
+        padding: 20px;
+        background-color: #ccebf8;
+    }
+
+    #DelBtn {
+        background-color: red;
+        color: white;
+    }
+
+    a {
+        color: #6c757d;
+    }
+</style>

@@ -1,0 +1,56 @@
+﻿@model Category
+
+@* <form method="post"></form> *@
+
+<h1 class="text-primary">Create New Category</h1>
+
+<form method="post">
+    <fieldset>
+        <div>
+            <label asp-for="Name" class="form-label mt-0"></label>
+            <input asp-for="Name" class="form-control border-black shadow" id="exampleInputEmail1" placeholder="Enter Category Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+            
+        </div>
+        <div>
+            <label asp-for="DisplayOrder" class="form-label mt-2"></label>
+            <input asp-for="DisplayOrder" class="form-control border-black shadow" id="exampleInputPassword1" placeholder="Enter Display Order" autocomplete="off">
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>  
+        </fieldset>
+
+
+<div class="row">
+    <div class="col-6">
+            <button type="submit" class="btn btn-primary mt-3 shadow border-black form-control">Create</button>
+    </div>
+    <div class="col-6">
+            <a asp-controller="Category" asp-action="Index" class="btn btn-dark mt-3 shadow border-black  form-control">Go back to list</a>
+    </div>
+</div>
+
+</form>
+
+
+
+<style>
+    form {
+        border: 2px solid #000; 
+        border-radius: 7px;
+        padding: 20px; 
+        background-color: #ccebf8;
+    }
+
+    
+
+    a {
+        color: #6c757d;
+    }
+</style>
+
+
+@section scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+}
