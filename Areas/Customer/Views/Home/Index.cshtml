@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Product>
-
+<body class="bg-info-subtle">
 <div class="row pb-3">
     @foreach (var product in Model)
     {
         <div class="col-lg-3 col-sm-6">
             <div class="row p-2">
                 <div class="col-12 p-1">
-                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded bg-secondary-subtle">
 
                         <img class="card-img-top rounded"  src="@product.ImageURL"/>
 
@@ -20,7 +20,7 @@
                         </div>
 
                         <div >
-                            <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">
+                            <a asp-action="Details" asp-route-productid="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">
                                 Details
                             </a>
                         </div>
@@ -31,3 +31,21 @@
         </div>
     }
 </div>
+</body>
+
+@* <style>
+.card {
+    /* Set a fixed height for the cards */
+    height: 580px; /* Adjust as needed */
+
+    /* Optionally, set a fixed width for the cards */
+    width: 100%; /* Adjust as needed */
+
+    /* Add any other styling you want for the cards */
+    /* For example: */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+</style> *@

@@ -27,6 +27,7 @@ namespace Project_BookStore.DataAccess.IRepository
 
         public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
         {
+
             IQueryable<T> query;
             if (tracked)
             {
@@ -80,6 +81,11 @@ namespace Project_BookStore.DataAccess.IRepository
         }
     }
 }
+
+
+
+
+
 //public class Repository<T> : IRepository<T> where T : class
 //{
 //    private readonly AppDbContext _db;

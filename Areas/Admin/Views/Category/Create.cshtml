@@ -1,10 +1,13 @@
 ﻿@model Category
 
-@* <form method="post"></form> *@
 
+<body class="bg-info-subtle">
 <h1 class="text-primary">Create New Category</h1>
 
-<form method="post">
+<form class="bg-primary-subtle" method="post" style="border: 2px solid #000;
+        border-radius: 7px;
+        padding: 20px;
+        background-color: #ccebf8;">
     <fieldset>
         <div>
             <label asp-for="Name" class="form-label mt-0"></label>
@@ -30,23 +33,7 @@
 </div>
 
 </form>
-
-
-
-<style>
-    form {
-        border: 2px solid #000; 
-        border-radius: 7px;
-        padding: 20px; 
-        background-color: #ccebf8;
-    }
-
-    
-
-    a {
-        color: #6c757d;
-    }
-</style>
+</body>
 
 
 @section scripts{

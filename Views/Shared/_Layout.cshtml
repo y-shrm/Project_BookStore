@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿
+
+@using Project_BookStore.Utility
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,32 +23,41 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
+                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link active" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                             
                         </li>
-
+                    
+                    @if (User.IsInRole(StaticDetail.Roll_Admin))
+                    {
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
                         </li>
 
-                    <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
                         </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Order Management</a>
+                            </li>
+                    }
 
-                     <li class="nav-item">
-                        <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                     </li>
 
-
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                    @if(User.IsInRole(StaticDetail.Roll_Customer)){
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index"><i class="bi bi-bag"></i></a>
+                    </li>
+                    }
 
                     </ul>
                     <partial name="_LoginPartial"></partial>
                 </div>
-            @* </div> *@
+             </div> 
         </nav>
      </header>
 
@@ -55,10 +67,10 @@
         </main>
     </div>
 
-    <footer class="border-top footer bg-primary">
+    <footer class="border-top footer bg-primary h-0">
         <div class="container" style="color: white;"> Made by Yash Sharma 
             <a style="color: white; margin-right: 7px; margin-left: 7px;" class="bi bi-instagram" href="https://www.instagram.com/y.shrm07/" target="_blank"></a> 
-            <a style="color: white;" class="bi bi-github" href=""></a>
+            <a style="color: white;" class="bi bi-github" href="https://github.com/y-shrm" target="_blank"></a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

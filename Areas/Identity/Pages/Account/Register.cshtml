@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Register";
 }
-
+<body class="bg-info-subtle">
 <h1>@ViewData["Title"]</h1>
 
 <div class="row">
@@ -12,6 +12,12 @@
             <h2>Create a new account.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Name" class="form-control border-black" aria-required="true" placeholder="Name" />
+                <label asp-for="Input.Name">Name</label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control border-black" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <label asp-for="Input.Email">Email</label>
@@ -27,41 +33,133 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+
+            <div id="test" class="form-floating mb-3">
+                <input asp-for="Input.StreetAddress" class="form-control border-black" aria-required="true" placeholder="Street Address" />
+                <label asp-for="Input.StreetAddress">Street Address</label>
+                <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+            </div>
+
+                <div id="test1" class="form-floating mb-3">
+                <input asp-for="Input.City" class="form-control border-black" aria-required="true" placeholder="City" />
+                <label asp-for="Input.City">City</label>
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div>
+
+                <div id="test2" class="form-floating mb-3">
+                <input asp-for="Input.State" class="form-control border-black" aria-required="true" placeholder="State" />
+                <label asp-for="Input.State">State</label>
+                <span asp-validation-for="Input.State" class="text-danger"></span>
+            </div>
+
+                <div id="test3" class="form-floating mb-3">
+                <input asp-for="Input.PostalCode" class="form-control border-black" aria-required="true" placeholder="Postal Code" />
+                <label asp-for="Input.PostalCode">Postal Code</label>
+                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+            </div>
+
+                <div id="test4" class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control border-black" aria-required="true" placeholder="PhoneNumber" />
+                <label asp-for="Input.PhoneNumber">PhoneNumber</label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3" hidden >
+                    <select id="Input_Role" asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
+                       <option value="customer" selected>Customer</option>
+                    
+                </select>
+                    
+            </div>
+                <div  class="form-floating mb-3">
+                    <input id="securityKeyInput" type="password" class="form-control border-black" placeholder="Admin Key" />
+                    <label id="raju" for="securityKeyInput">Admin Key</label>
+                    
+                </div>
+
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mb-2">Register</button>
+
+
+
+
+            <div style="display: flex; justify-content: space-between;">
+            <div class="">
+             <a id="adminRegister" type="submit" class="w-100 ">Register as Admin User</a>
+                
+             </div>
+             <div class="">
+                    <a id="CustomerRegister" type="submit" class="w-100 ">Register as a customer</a>
+             </div>
+                </div>
+
+
+
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
-        <section>
-            @* <h3>Use another service to register.</h3> *@
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    // <div>
-                    //     <p>
-                    //         There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                    //         about setting up this ASP.NET application to support logging in via external services</a>.
-                    //     </p>
-                    // </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
     </div>
 </div>
+</body>
+
+
+
+<script>
+    document.getElementById("securityKeyInput").style.display = "none";
+    document.getElementById("raju").style.display = "none";
+
+    document.getElementById("adminRegister").addEventListener("click", function (event) {
+
+        
+        document.getElementById("securityKeyInput").style.display = "block";
+        document.getElementById("raju").style.display = "block";
+
+
+        document.getElementById("test").style.display = "none";
+        document.getElementById("test1").style.display = "none";
+        document.getElementById("test2").style.display = "none";
+        document.getElementById("test3").style.display = "none";
+        document.getElementById("test4").style.display = "none";
+    });
+
+
+    document.getElementById("CustomerRegister").addEventListener("click", function (event) {
+
+        document.getElementById("securityKeyInput").style.display = "none";
+        document.getElementById("raju").style.display = "none";
+
+
+        document.getElementById("test").style.display = "block";
+        document.getElementById("test1").style.display = "block";
+        document.getElementById("test2").style.display = "block";
+        document.getElementById("test3").style.display = "block";
+        document.getElementById("test4").style.display = "block";
+    });
+
+
+
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
+        event.preventDefault(); 
+
+       
+        const securityKey = document.getElementById("securityKeyInput").value;
+
+        
+
+        // HARD CODED SECURITY KEY
+        if (securityKey === "Admin@1234") {
+
+            document.getElementById("Input_Role").value = "Admin";
+        }
+        
+
+
+       
+        this.submit();
+    });
+</script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+

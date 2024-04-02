@@ -1,0 +1,67 @@
+﻿@model List<OrderDetail>
+
+<body class="bg-info-subtle">
+<div class="container">
+    <div class="row pt-4 pb-2">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Order List
+            </h2>
+        </div>
+        @* <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary shadow border-black">Add New Category</a>
+        </div> *@
+    </div>
+
+        <table class="table table-secondary table-striped table-bordered ">
+        <thead class="table-primary">
+            <tr>
+                <th>Customer Name</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Street Address</th>
+                <th>Postal Code</th>
+                <th>Phone Number</th>
+                <th>Order Date</th>
+                <th>Order Total</th>
+                <th>Product</th>
+                <th>Count</th>
+
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.Id))
+            {
+                <tr>
+
+                    <td>@obj.OrderHeader.Name</td>
+                    <td> @obj.OrderHeader.State </td>
+                    <td> @obj.OrderHeader.City </td>
+                    <td> @obj.OrderHeader.StreetAddress </td>
+                    <td> @obj.OrderHeader.PostalCode </td>
+                    <td> @obj.OrderHeader.PhoneNumber </td>
+
+                    <td>
+                        @* <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id">
+                            <i class="bi bi-pencil-square"></i>
+                        </a> *@
+
+                        @obj.OrderHeader.OderDate
+                    </td>
+
+                    <td>
+                        @* <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id">
+                            <i class="bi bi-trash3 text-danger"></i>
+                        </a> *@
+                        @obj.OrderHeader.OrderTotal
+                    </td>
+                    <td> @obj.Product.Title </td>
+                    <td> @obj.Count </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</body>

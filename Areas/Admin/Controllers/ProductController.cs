@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.IdentityModel.Tokens;
@@ -6,11 +7,13 @@ using Project_BookStore.DataAccess.Data;
 using Project_BookStore.DataAccess.Repository;
 using Project_BookStore.Models;
 using Project_BookStore.Models.ViewModels;
+using Project_BookStore.Utility;
 using System.Collections.Generic;
 
 namespace Project_BookStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticDetail.Roll_Admin)]
     public class ProductController : Controller
     {
 

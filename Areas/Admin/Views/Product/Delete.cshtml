@@ -1,10 +1,13 @@
 ﻿@model Product
 
 @* <form method="post"></form> *@
-
+<body class="bg-info-subtle">
 <h1 class="text-primary">Delete Product</h1>
 
-<form method="post">
+    <form class="bg-primary-subtle" method="post" style="border: 2px solid #000;
+        border-radius: 7px;
+        padding: 20px;
+        ">
     <input asp-for="Id" hidden>
 
     <fieldset>
@@ -37,7 +40,7 @@
 
     <div class="row">
         <div class="col-6">
-           <button id="DelBtn" type="submit" class="btn mt-3 shadow border-black form-control ">Delete</button>
+                <button id="DelBtn" type="submit" class="btn btn-danger mt-3 shadow border-black form-control ">Delete</button>
         </div>
         <div class="col-6">
             <a asp-controller="Product" asp-action="Index" class="btn btn-dark mt-3 shadow border-black form-control">Go back to list</a>
@@ -45,25 +48,7 @@
     </div>
 
 </form>
+</body>
 
 
 
-<style>
-    form {
-        border: 2px solid #000;
-        border-radius: 7px;
-        padding: 20px;
-        background-color: #ccebf8;
-    }
-
-
-
-    a {
-        color: #6c757d;
-    }
-
-    #DelBtn{
-        background-color: red;
-        color:white;
-    }
-</style>

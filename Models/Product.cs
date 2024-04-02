@@ -20,8 +20,8 @@ namespace Project_BookStore.Models
         public string? Author { get; set; }
 
         [Required]
-        //[Display(Name = "List Price")]
-        [Range(100, 2000)]
+        
+        [Range(100, 5000)]
         public double? Price { get; set; }
 
         public int CategoryId { get; set; }
@@ -29,7 +29,7 @@ namespace Project_BookStore.Models
         [ValidateNever]
         public Category? Category { get; set; }
 
-        
+        [ValidateNever]
         public string ImageURL { get; set; }
 
 

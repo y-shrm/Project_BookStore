@@ -1,18 +1,21 @@
 ﻿@model ProductVM
 
 
-
+<body class="bg-info-subtle">
 <h1 class="text-primary">@(Model.Product.Id != 0 ? "Update" : "Create") Product</h1>
 <div style="display: flex; justify-content: space-between;">
     <div style="flex: 1; margin-right: 20px;">
-<form method="post" enctype="multipart/form-data">
+            <form class="bg-primary-subtle" method="post" enctype="multipart/form-data" style="border: 2px solid #000;
+        border-radius: 7px;
+        padding: 20px;
+        background-color: #ccebf8;">
     <input asp-for="Product.Id" hidden/>
     <input asp-for="Product.ImageURL" hidden />
 
     
 
     
-    <fieldset @* style="margin-right: 200px" *@>
+    <fieldset>
         <div>
             <label asp-for="Product.Title" class="form-label mt-0"></label>
             <input asp-for="Product.Title" class="form-control border-black shadow" placeholder="Enter the Title">
@@ -78,35 +81,17 @@
 </form>
 
     </div>
-    <div style="flex: 1;">
-        <img src="@Model.Product.ImageURL" width="70%" style="border-radius:5px; border: 1px solid #bbb9b9; height:500px; margin-left:90px; margin-top: 35px" />
+    <div  style="flex: 1;">
+            <img class="bg-light"  src="@Model.Product.ImageURL" width="70%" style="border-radius:5px; border: 1px solid #bbb9b9; height:500px; margin-left:90px; margin-top: 35px" />
     </div>
 </div>
+</body>
 
 
 
-
-
-
-<style>
-    form {
-        border: 2px solid #000; 
-        border-radius: 7px;
-        padding: 20px; 
-        background-color: #ccebf8;
-    }
-
-    
-
-    a {
-        color: #6c757d;
-    }
-</style>
-
-
- @section scripts{
+@section scripts {
     @{
-    <partial Title="_ValidationScriptsPartial"/>
+        <partial name="_ValidationScriptsPartial" />
     }
 }
 
